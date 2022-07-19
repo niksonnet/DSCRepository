@@ -8,13 +8,11 @@ struct Node{
 };
 
 
-struct Node* Insert(struct Node* head,int x){
+void Insert(struct Node** head,int x){
   struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
   temp->data = x;
-  temp->next = head;
-  head = temp;
-
-  return head;
+  temp->next = *head;
+  *head = temp;
 };
 
 void Print(struct Node* head){
@@ -34,7 +32,7 @@ int main(){
   for(i=0;i<n;i++){
     printf("\nEnter the number : \n");
     scanf("%d",&x);
-    head = Insert(head,x);
+    Insert(&head,x);
     Print(head);
   }
   return 0;
